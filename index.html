@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How Many Moons?</title>
+    <style>
+    /* set dark indigo background and white text */
+    body {
+        background-color: #051049;
+        color: white;
+        text-align: center;
+    }
+
+    /* Use a sans-serif font for readability */
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Add some spacing and padding for better readability and aesthetics*/
+    h1 {
+        margin: 30px 0;
+        padding: 0;
+    }
+
+    form {
+        margin: 20px 0;
+    }
+
+    /* Add some CSS to make the result text larger and more prominent */
+    #result {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    /* Add a little animation when the result is displayed */
+      #result {
+        animation: reveal 1s ease-in-out;
+      }
+
+
+
+    /* Style the full moon symbols */
+    .full-moon {
+        font-size: 40px;
+        font-weight: bold;
+        color: white;
+        display: inline-block;
+        margin: 0 5px;
+    }
+
+    /* Add hover effect for full-moon symbols */
+    .full-moon:hover {
+        color: grey;
+        cursor: pointer;
+    }
+
+    /* Add an appropriate transition effect */
+    .full-moon, #result {
+        animation: reveal 2s ease-in-out;
+    }
+
+    @keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Adjusts the font size, margins, padding and etc based on the screen */
+   
+ /* Large screens */
+    @media (min-width: 1200px) {
+        h1 {
+            font-size: 64px;
+        }
+
+        #result {
+            font-size: 48px;
+        }
+
+        .full-moon {
+            font-size: 60px;
+        }
+    }
+
+    /* Medium screens */
+    @media (min-width: 768px) and (max-width: 1199px) {
+        h1 {
+            font-size: 48px;
+        }
+
+        #result {
+            font-size: 36px;
+        }
+
+        .full-moon {
+            font-size: 40px;
+        }
+    }
+
+
+
+/* Adjust the form layout for mobile devices */
+@media (max-width: 767px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label, input[type="date"] {
+    width: 70%;
+    margin: 10px auto;
+  }
+
+  button[type="button"] {
+    width: 70%;
+    margin: 20px auto;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <h1>What's your age in full moons?</h1>
+    <form>
+        <label>Enter your birthdate:</label>
+        <input type="date" id="birthdate" />
+        <button type="button" onclick="calculateFullMoons()">How Many Moons?</button>
+    </form>
+</br>
+</br>
+    <p id="result"></p>
+    <div id="fullMoonSymbols"></div>
+    <script>
+    function calculateFullMoons() {
+        // Get the birthdate entered by the user
+        var birthdate = new Date(document.getElementById("birthdate").value);
+        // Get the current date
+        var today = new Date();
+        // Calculate the number of milliseconds between the birthdate and today
+        var timeAlive = today - birthdate;
+        // Calculate the number of full moons that have occurred since the birthdate
+        // (assuming an average of 29.5 days per lunar month)
+        var fullMoons = timeAlive / (1000 * 60 * 60 * 24 * 29.5);
+        // Round to the nearest full moon
+        fullMoons = Math.round(fullMoons);
+
+         // Display the result to the user
+        document.getElementById("result").innerHTML = "Wow, you are " + fullMoons + " moons old";
+        // Add the "show" class to the result element to trigger the animation
+        document.getElementById("result").classList.add("show");
+
+        // Create the full moon symbols
+        var fullMoonSymbols = '';
+        for (var i = 0; i < fullMoons; i++) {
+            fullMoonSymbols += '<span class="full-moon">🌕</span>';
+        }
+
+        // Add the full moon symbols to the page
+        document.getElementById("fullMoonSymbols").innerHTML = fullMoonSymbols;
+      }
+    </script>
+  </body>
+</html>
