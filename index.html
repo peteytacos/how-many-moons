@@ -3,6 +3,8 @@
 <head>
     <title>How Many Moons??</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/ios/50/null/full-moon.png">
     <style>
     /* set dark indigo background and white text */
     body {
@@ -130,7 +132,7 @@
 </br>
 </br>
     <p id="result"></p>
-    <div id="fullMoonSymbols"></div>
+    <div id="fullMoonSymbols" style="margin: 0 45px;"></div>
     <script>
     function calculateFullMoons() {
         // Get the birthdate entered by the user
@@ -146,7 +148,7 @@
         fullMoons = Math.round(fullMoons);
 
          // Display the result to the user
-        document.getElementById("result").innerHTML = "Wow, you are " + fullMoons + " moons old";
+        document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " moons old!";
         // Add the "show" class to the result element to trigger the animation
         document.getElementById("result").classList.add("show");
 
