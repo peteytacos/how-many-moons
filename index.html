@@ -6,20 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/ios/50/null/full-moon.png">
+    <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Rubik+Bubbles">
     <style>
-        /* set dark indigo background and white text mmk */
         body {
             background-color: #000000;
             color: white;
             text-align: center;
         }
-
-        /* Use a sans-serif font for readability */
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Rubik+Bubbles', sans-serif;
         }
 
-        /* Add some spacing and padding for better readability and aesthetics*/
         h1 {
             margin: 30px 0;
             padding: 0;
@@ -29,21 +27,16 @@
             margin: 20px 0;
         }
 
-        /* Add some CSS to make the result text larger and more prominent */
         #result {
             font-size: 32px;
             font-weight: bold;
             margin: 20px 0;
         }
 
-        /* Add a little animation when the result is displayed */
         #result {
             animation: reveal 1s ease-in-out;
         }
 
-
-
-        /* Style the full moon symbols */
         .full-moon {
             font-size: 40px;
             font-weight: bold;
@@ -52,13 +45,11 @@
             margin: 0 5px;
         }
 
-        /* Add hover effect for full-moon symbols */
         .full-moon:hover {
             color: grey;
             cursor: pointer;
         }
 
-        /* Add an appropriate transition effect */
         .full-moon,
         #result {
             animation: reveal 2s ease-in-out;
@@ -74,9 +65,6 @@
             }
         }
 
-        /* Adjusts the font size, margins, padding and etc based on the screen */
-
-        /* Large screens */
         @media (min-width: 1200px) {
             h1 {
                 font-size: 64px;
@@ -91,7 +79,6 @@
             }
         }
 
-        /* Medium screens */
         @media (min-width: 768px) and (max-width: 1199px) {
             h1 {
                 font-size: 48px;
@@ -106,9 +93,6 @@
             }
         }
 
-
-
-        /* Adjust the form layout for mobile devices */
         @media (max-width: 767px) {
             form {
                 display: flex;
