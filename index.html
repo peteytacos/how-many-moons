@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/ios/50/null/full-moon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,900&display=swap" rel="stylesheet">
-   <style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@1,900&display=swap" rel="stylesheet">
+    <style>
         body {
             background-color: #000000;
             color: white;
@@ -77,8 +77,8 @@
             }
 
             h2 {
-        font-size: 40px;
-        }
+                font-size: 40px;
+            }
 
             #result {
                 font-size: 48px;
@@ -94,9 +94,9 @@
                 font-size: 48px;
             }
 
-h2 {
-        font-size: 30px;
-        }
+            h2 {
+                font-size: 30px;
+            }
 
             #result {
                 font-size: 36px;
@@ -129,10 +129,10 @@ h2 {
 </head>
 
 <body>
-    <h1>What's your age in full moons??</h1>
+    <h1>What's your age in full moons?TEST?</h1>
     <form>
         <h2><label>Enter your birthdate:</label></h2>
-        <input type="date" id="birthdate" value="1984-05-21"/>
+        <input type="date" id="birthdate" value="1984-05-21" />
         <button type="button" onclick="calculateFullMoons()">How Many Moons?</button>
     </form>
     </br>
@@ -159,7 +159,7 @@ h2 {
 
             // Display the result to the user
             document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " moons old!";
-            
+
             // Add the "show" class to the result element to trigger the animation
             document.getElementById("result").classList.add("show");
 
