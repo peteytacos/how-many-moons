@@ -46,11 +46,13 @@
             color: white;
             display: inline-block;
             margin: 0 5px;
+            transition: .5s ease-in-out;
         }
 
         .full-moon:hover {
             color: grey;
             cursor: pointer;
+            transform: rotate(720deg);
         }
 
         .full-moon,
@@ -166,7 +168,7 @@
             // Create the full moon symbols
             let fullMoonSymbols = '';
             for (let i = 0; i < fullMoons; i++) {
-                fullMoonSymbols += '<span class="full-moon">🌕</span>';
+                fullMoonSymbols += '<span class="full-moon"><img src="/images/moon2.png" alt="moon" width="60" height="60"></span > ';
             }
 
             // Add the full moon symbols to the page
