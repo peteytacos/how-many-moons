@@ -228,21 +228,15 @@
     <div id="fullMoonSymbols" style="margin: 0 5px;"></div>
     <script>
         function calculateFullMoons() {
+            var birthdate = new Date(document.getElementById("birthdate").value);
+            var today = new Date();
+            var fullMoons = Math.floor((today - birthdate) / (29.53 * 24 * 60 * 60 * 1000));
 
-            // Get users birthdate
-            let birthdate = new Date(document.getElementById("birthdate").value);
+            document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
+            document.getElementById("result").classList.add("show");
 
-            // Get current date
-            let today = new Date();
-
-            // Calculate the number of milliseconds between the birthdate and today
-            let timeAlive = today - birthdate;
-
-            /* Calculate the number of full moons that have occurred since the birthdate 
-            (assuming an average of 29.5 days per lunar month)*/
-            let fullMoons = timeAlive / (1000 * 60 * 60 * 24 * 29.5);
-            // Round to the nearest full moon
-            fullMoons = Math.round(fullMoons);
+            // Update the URL with the birthdate
+            history.pushState({ birthdate: birthdate }, '', '?birthdate=' + birthdate.toISOString().split('T')[0]);
 
             // Display the result to the user
             document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
@@ -259,6 +253,21 @@
             // Add the full moon symbols to the page
             document.getElementById("fullMoonSymbols").innerHTML = fullMoonSymbols;
         }
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const birthdate = urlParams.get('birthdate');
+
+            if (birthdate) {
+                // Set the birthdate in the date picker
+                document.getElementById("birthdate").value = birthdate;
+
+                // Call the calculateFullMoons function to calculate and display the result
+                calculateFullMoons();
+            }
+        }
+
+        document.getElementById("calculate").addEventListener("click", calculateFullMoons);
     </script>
 </body>
 
