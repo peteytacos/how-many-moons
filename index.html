@@ -240,6 +240,10 @@
         <!-- <h2><label>Enter your birthdate:</label></h2> -->
         <input type="date" id="birthdate" value="1984-05-21" /><br><br>
         <button type="button" onclick="calculateFullMoons()">How Many Moons?</button>
+        <!-- <div>
+            <button style="margin-bottom: 5px;" onclick="copyCurrentURL()">Share</button><br>
+            <span id="feedbackMessage"></span>
+        </div> -->
     </form>
     </br>
     </br>
@@ -251,8 +255,9 @@
             var today = new Date();
             var fullMoons = Math.floor((today - birthdate) / (29.53 * 24 * 60 * 60 * 1000));
 
-            document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
-            document.getElementById("result").classList.add("show");
+            //possibly delete
+            // document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
+            // document.getElementById("result").classList.add("show");
 
             // Update the URL with the birthdate
             history.pushState({ birthdate: birthdate }, '', '?birthdate=' + birthdate.toISOString().split('T')[0]);
@@ -287,6 +292,28 @@
         }
 
         document.getElementById("calculate").addEventListener("click", calculateFullMoons);
+
+
+        // Copy URL to clipboard
+        async function copyCurrentURL() {
+            const url = window.location.href;
+            try {
+                await navigator.clipboard.writeText(url);
+                const feedbackMessage = document.getElementById('feedbackMessage');
+                feedbackMessage.textContent = 'URL Copied!';
+
+                // Explicitly wait for 2 seconds before clearing the message
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                feedbackMessage.textContent = '';
+            } catch (err) {
+                const feedbackMessage = document.getElementById('feedbackMessage');
+                feedbackMessage.textContent = 'Failed to copy URL!';
+                console.error('Failed to copy:', err);
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                feedbackMessage.textContent = '';
+            }
+        }
     </script>
 </body>
 

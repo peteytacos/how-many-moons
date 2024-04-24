@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Button</title>
+</head>
+
+<body>
+    <div>
+        <button onclick="copyCurrentURL()">Share</button><br>
+        <span id="feedbackMessage"></span>
+    </div>
+
+    <script>
+        async function copyCurrentURL() {
+            const url = window.location.href;
+            try {
+                await navigator.clipboard.writeText(url);
+                const feedbackMessage = document.getElementById('feedbackMessage');
+                feedbackMessage.textContent = 'URL Copied to Clipboard!';
+
+                // Explicitly wait for 2 seconds before clearing the message
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                feedbackMessage.textContent = '';
+            } catch (err) {
+                const feedbackMessage = document.getElementById('feedbackMessage');
+                feedbackMessage.textContent = 'Failed to copy URL!';
+                console.error('Failed to copy:', err);
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                feedbackMessage.textContent = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
