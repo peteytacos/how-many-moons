@@ -52,10 +52,10 @@
         }
 
         a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            /* display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white; */
             text-decoration: none;
         }
 
@@ -67,6 +67,19 @@
 
         a#reset:hover {
             color: rgb(200, 200, 200);
+        }
+
+        #reset_share {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        #feedbackMessage {
+            font-size: 24px;
         }
 
         label {
@@ -106,10 +119,11 @@
             cursor: pointer;
         }
 
-        button[type="button-2"] a {
+        /* this doesn't do anything */
+        /* button[type="button-2"] a {
             display: flex;
             align-items: center;
-        }
+        } */
 
         button[type="button-2"]:hover {
             background-color: #333;
@@ -263,7 +277,7 @@
             history.pushState({ birthdate: birthdate }, '', '?birthdate=' + birthdate.toISOString().split('T')[0]);
 
             // Display the result to the user
-            document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
+            document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><div id="reset_share"><a href="/"><button type="button-2">Reset<img src="/images/reset.svg" alt="reset" width="25" height="25" style="filter: invert(100%); margin-left: 10px;"></button></a><button type="button-2" onclick="copyCurrentURL()">Share</button></div><div><span id="feedbackMessage"></span></div><br>';
 
             // Add the "show" class to the result element to trigger the animation
             document.getElementById("result").classList.add("show");
@@ -302,15 +316,15 @@
                 const feedbackMessage = document.getElementById('feedbackMessage');
                 feedbackMessage.textContent = 'URL Copied!';
 
-                // Explicitly wait for 2 seconds before clearing the message
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                // Explicitly wait for 1.5 seconds before clearing the message
+                await new Promise(resolve => setTimeout(resolve, 1500));
                 feedbackMessage.textContent = '';
             } catch (err) {
                 const feedbackMessage = document.getElementById('feedbackMessage');
                 feedbackMessage.textContent = 'Failed to copy URL!';
                 console.error('Failed to copy:', err);
 
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                await new Promise(resolve => setTimeout(resolve, 1500));
                 feedbackMessage.textContent = '';
             }
         }
