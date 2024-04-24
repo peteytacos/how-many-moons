@@ -265,13 +265,9 @@
     <div id="fullMoonSymbols" style="margin: 0 5px;"></div>
     <script>
         function calculateFullMoons() {
-            var birthdate = new Date(document.getElementById("birthdate").value);
-            var today = new Date();
-            var fullMoons = Math.floor((today - birthdate) / (29.53 * 24 * 60 * 60 * 1000));
-
-            //possibly delete
-            // document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><a href="/"><button type="button-2" style="display: flex; align-items: center;">Reset<img src="/images/reset.svg" alt="reset" width="30" height="30" style="filter: invert(100%); margin-left: 10px;"></button></a><br>';
-            // document.getElementById("result").classList.add("show");
+            let birthdate = new Date(document.getElementById("birthdate").value);
+            let today = new Date();
+            let fullMoons = Math.floor((today - birthdate) / (29.53 * 24 * 60 * 60 * 1000));
 
             // Update the URL with the birthdate
             history.pushState({ birthdate: birthdate }, '', '?birthdate=' + birthdate.toISOString().split('T')[0]);
@@ -290,7 +286,11 @@
 
             // Add the full moon symbols to the page
             document.getElementById("fullMoonSymbols").innerHTML = fullMoonSymbols;
+
+            // Add GitHub link below the full moon symbols
+            document.getElementById("fullMoonSymbols").innerHTML += '<a href="https://github.com/peteytacos/how-many-moons" target="_blank" style="display: block; margin-top: 20px;" ><img src="/images/github.svg" width="30" height="29"></a>';
         }
+
 
         window.onload = function () {
             const urlParams = new URLSearchParams(window.location.search);
