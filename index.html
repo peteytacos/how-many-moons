@@ -11,6 +11,7 @@
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-T42X3BTL');</script>
+
     <!-- End Google Tag Manager -->
     <title>How Many Moons?</title>
     <meta property="og:title" content="How many moons old are you?" />
@@ -29,7 +30,6 @@
             background-color: #000000;
             color: white;
             text-align: center;
-            /* loop */
         }
 
         body {
@@ -45,24 +45,14 @@
             margin: 20px 0;
         }
 
-        #result {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 0 0 20px 0;
-        }
-
         a {
-            /* display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white; */
             text-decoration: none;
         }
 
         a#reset {
             color: rgb(255, 255, 255);
             text-decoration: none;
-            transition: color 0.3s ease-in-out;
+            transition: color 2s ease-in-out;
         }
 
         a#reset:hover {
@@ -119,12 +109,6 @@
             cursor: pointer;
         }
 
-        /* this doesn't do anything */
-        /* button[type="button-2"] a {
-            display: flex;
-            align-items: center;
-        } */
-
         button[type="button-2"]:hover {
             background-color: #333;
         }
@@ -145,11 +129,16 @@
             background-color: #333;
         }
 
+        /* #result {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 0 20px 0;
+        } */
+
+
         p#result.show {
             margin-top: 0;
-        }
-
-        #result {
+            transition: 2s ease-in-out;
             animation: reveal 2s ease-in-out;
         }
 
@@ -159,7 +148,7 @@
             color: white;
             display: inline-block;
             margin: 0 5px;
-            transition: .5s ease-in-out;
+            transition: 2s ease-in-out;
         }
 
         .full-moon:hover {
@@ -272,11 +261,12 @@
             // Update the URL with the birthdate
             history.pushState({ birthdate: birthdate }, '', '?birthdate=' + birthdate.toISOString().split('T')[0]);
 
+            // Add the "show" class to the result element to trigger the animation
+            document.getElementById("result").classList.add("show");
+
             // Display the result to the user
             document.getElementById("result").innerHTML = "Neato, you are " + fullMoons + " full moons old!" + '<br><br><div id="reset_share"><a href="/"><button type="button-2">Reset<img src="/images/reset.svg" alt="reset" width="25" height="25" style="filter: invert(100%); margin-left: 10px;"></button></a><button type="button-2" onclick="copyCurrentURL()">Share</button></div><div><span id="feedbackMessage"></span></div><br>';
 
-            // Add the "show" class to the result element to trigger the animation
-            document.getElementById("result").classList.add("show");
 
             // Create the full moon symbols
             let fullMoonSymbols = '';
